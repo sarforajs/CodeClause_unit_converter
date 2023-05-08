@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Unit Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+    
+    h1 {
+      text-align: center;
+      color: #333;
+      padding: 20px;
+      margin: 0;
+      background-color: #ffffff;
+    }
+    
+    .converter {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .input-field {
+      margin-right: 10px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    
+    .result {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    
+    button {
+      padding: 8px 16px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+  <script>
+    function convert() {
+      var input = document.getElementById("inputValue").value;
+      var fromUnit = document.getElementById("fromUnit").value;
+      var toUnit = document.getElementById("toUnit").value;
+      var result;
+      
+      // Perform the conversion based on the selected units
+      if (fromUnit === "cm" && toUnit === "in") {
+        result = input * 0.393701;
+      } else if (fromUnit === "in" && toUnit === "cm") {
+        result = input * 2.54;
+      } else if (fromUnit === "kg" && toUnit === "lb") {
+        result = input * 2.20462;
+      } else if (fromUnit === "lb" && toUnit === "kg") {
+        result = input * 0.453592;
+      } else if (fromUnit === "km" && toUnit === "mi") {
+        result = input * 0.621371;
+      } else if (fromUnit === "mi" && toUnit === "km") {
+        result = input * 1.60934;
+      } else {
+        result = "Invalid conversion";
+      }
+      
+      // Display the result
+      document.getElementById("result").innerHTML = result;
+    }
+  </script>
+</head>
+<body>
+  <h1>Unit Converter</h1>
+  
+  <div class="converter">
+    <input type="number" id="inputValue" class="input-field">
+    <select id="fromUnit" class="input-field">
+      <option value="cm">cm</option>
+      <option value="in">in</option>
+      <option value="kg">kg</option>
+      <option value="lb">lb</option>
+      <option value="km">km</option>
+      <option value="mi">mi</option>
+    </select>
+    <select id="toUnit" class="input-field">
+      <option value="in">in</option>
+      <option value="cm">cm</option>
+      <option value="lb">lb</option>
+      <option value="kg">kg</option>
+      <option value="mi">mi</option>
+      <option value="km">km</option>
+    </select>
+    <button onclick="convert()">Convert</button>
+  </div>
+  
+  <div class="result">
+    <p>Result: <span id="result"></span></p>
+  </div>
+</body>
+</html>
+
